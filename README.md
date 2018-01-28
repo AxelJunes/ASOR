@@ -1,2 +1,2 @@
 # ASOR
-Operative Systems and Networks (University)
+Operating Systems and Networks (University)
