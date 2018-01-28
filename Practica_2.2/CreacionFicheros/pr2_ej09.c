@@ -20,12 +20,10 @@ int main(int argc, char ** argv){
   if(S_ISREG(buffer.st_mode)){
     printf("Ordinary file\n");
   }
-  else if(S_ISDIR(buffer.st_mode))
-  {
+  else if(S_ISDIR(buffer.st_mode)){
     printf("Directory\n");
   }
-  else if(S_ISLNK(buffer.st_mode))
-  {
+  else if(S_ISLNK(buffer.st_mode)){
     printf("Symbolic link\n");
   }
   printf("Last time the file was accesed: %s\n", ctime(&buffer.st_atime));
