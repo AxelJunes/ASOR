@@ -18,5 +18,5 @@ int main(int argc, char **argv){
 	perror(s);
 	printf("Error number: %d\n", strerror(errno));
 
-  return 0;
+	return 0;
 }

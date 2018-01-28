@@ -2,7 +2,7 @@
 Escribir un programa que consulte y muestre en pantalla el estado del
 cerrojo sobre un fichero. El proceso mostrará el estado del cerrojo. Además:
 - Si está bloqueado, fijará un cerrojo de escritura y escribirá la hora actual.
-  Después suspenderá la ejecución durante 30 segundos y liberará el cerrojo.
+Después suspenderá la ejecución durante 30 segundos y liberará el cerrojo.
 - Si el cerrojo está bloqueado terminará el proceso.
 */
 
@@ -44,28 +44,28 @@ int main(int argc, char ** argv) {
 		printf("%i - %s\n", errno, strerror(errno));
 		exit(-1);
 	}
-  else{ // fl.l_type == F_UNLCK
-    printf("Process is unlocked!\n");
-  	if (fcntl(fd, F_SETLK, &fl) == -1) {
-  		perror("Error getting lock");
-  		exit(-1);
-  	} else {
-      int length = 100;
-      time_t curtime;
-      time(&curtime);
-  		write(fd, ctime(&curtime), length);
-      // Sleep for 30 seconds
-      sleep(30);
-      // Unlock file
-  		fl.l_type = F_UNLCK;
-  		fl.l_whence = SEEK_SET;
-  		fl.l_start = 0;
-  		fl.l_len = 0;
-  		if (fcntl(fd, F_SETLK, &fl) == -1){
-  			printf("Error removing lock, %i - %s\n", errno, strerror(errno));
-  			exit(-1);
-  		}
-    }
+	else{ // fl.l_type == F_UNLCK
+		printf("Process is unlocked!\n");
+		if (fcntl(fd, F_SETLK, &fl) == -1) {
+			perror("Error getting lock");
+			exit(-1);
+		} else {
+			int length = 100;
+			time_t curtime;
+			time(&curtime);
+			write(fd, ctime(&curtime), length);
+			// Sleep for 30 seconds
+			sleep(30);
+			// Unlock file
+			fl.l_type = F_UNLCK;
+			fl.l_whence = SEEK_SET;
+			fl.l_start = 0;
+			fl.l_len = 0;
+			if (fcntl(fd, F_SETLK, &fl) == -1){
+				printf("Error removing lock, %i - %s\n", errno, strerror(errno));
+				exit(-1);
+			}
+		}
 	}
 	exit(EXIT_SUCCESS);
 }

@@ -14,8 +14,8 @@ int main(int argc, char **argv){
   int n = 0;
 
   while(n < 133){
-  	perror(strerror(n));
-  	n++;
+    perror(strerror(n));
+    n++;
   }
 
   return 0;

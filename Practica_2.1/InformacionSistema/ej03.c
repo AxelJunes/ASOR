@@ -15,5 +15,5 @@ int main(int argc, char **argv){
 	printf("Maximum number of child processes: %ld\n", sysconf(_SC_CHILD_MAX));
 	printf("Maximum number of files: %ld\n", sysconf(_SC_OPEN_MAX));
 
-  return 0;
+	return 0;
 }

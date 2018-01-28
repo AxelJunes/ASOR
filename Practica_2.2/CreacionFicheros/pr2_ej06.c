@@ -12,8 +12,8 @@ int main(int argc, char ** argv){
   // Set mask so that new files don't have write permissions for group
   // and no other permissions for the rest of users
   umask(0727);
-	fd = open(argv[1], O_CREAT, 0777);
-	if (fd == -1) {
+  fd = open(argv[1], O_CREAT, 0777);
+  if (fd == -1) {
     printf("Error opening file, %i - %s\n", errno, strerror(errno));
     return -1;
   }

@@ -12,10 +12,10 @@
 
 int main(int argc, char **argv){
   struct timeval now;
-	int rc;
+  int rc;
 
-	rc = gettimeofday(&now, NULL);
-	printf("System time: %u.%06u\n", now.tv_sec, now.tv_usec);
+  rc = gettimeofday(&now, NULL);
+  printf("System time: %u.%06u\n", now.tv_sec, now.tv_usec);
 
   return 0;
 }
